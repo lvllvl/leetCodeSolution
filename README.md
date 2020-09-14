@@ -40,5 +40,7 @@ dictionary comprehension.
 ```
 b = { 
    board[ word ][ letter ]: for ( word, letter ) for word in range( len(board))
-                                       for letter in range( len(board[ word ]) ) }
+                                       for letter in range( len(board[ word ]) ) 
+    }
 ```
+
