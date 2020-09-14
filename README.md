@@ -4,7 +4,7 @@
 ## 1138 Medium - 
 
 <p align="center">
-<img width="325" height="300" src="images/azboard.png">
+<img width="403" height="500" src="images/azboard.png">
 </p>
 
 In the initial example they provide us with the clue that the alphabet should
