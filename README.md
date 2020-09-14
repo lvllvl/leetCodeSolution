@@ -4,7 +4,7 @@
 ## 1138 Medium - 
 
 <p align="center">
-<img width="375" height="300" src="images/azboard.png">
+<img width="325" height="300" src="images/azboard.png">
 </p>
 
 In the initial example they provide us with the clue that the alphabet should
@@ -37,10 +37,17 @@ and letter positions ( i.e., letters : letter coordinates ).
 
 Let's take the board we've been given initially and convert by using a
 dictionary comprehension. 
+
 ```
 b = { 
    board[ word ][ letter ]: for ( word, letter ) for word in range( len(board))
                                        for letter in range( len(board[ word ]) ) 
     }
 ```
+
+Now that we have a dictionary b, we can access each letter and its coordinates
+much faster. 
+
+We can now iterate through the target string letter by letter and compare where
+each letter is in comparison to the previous letter. 
 
