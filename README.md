@@ -38,8 +38,7 @@ and letter positions ( i.e., letters : letter coordinates ).
 Let's take the board we've been given initially and convert by using a
 dictionary comprehension. 
 ```
-b = { board[ word ][ letter ]: for ( word, letter ) for word in range( len(
-board ) )
-for letter in range( len( board[ word ] ) ) }
-
+b = { 
+   board[ word ][ letter ]: for ( word, letter ) for word in range( len(board))
+                                       for letter in range( len(board[ word ]) ) }
 ```
