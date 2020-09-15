@@ -2,7 +2,7 @@
 #### Writing sample for a LeetCode Medium Solution 
 
 ## 1138. Alphabet Board Path
-#### Medium
+#### Medium https://leetcode.com/problems/alphabet-board-path/
 
 <p align="center">
 <img width="403" height="500" src="images/azboard.png">
