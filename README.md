@@ -67,7 +67,7 @@ new_board = { board[word][letter]: (word,letter) for word in range(len(board))
                                              for letter in range(len(board[word])) }
 ```
 
-### *How do we use our dictionary?*
+### *How do we use our dictionary to solve our problem?*
 
 Here's a quick example for how we will use our dictionary. If target = 'aj' our
 task is to record the directions we need to take from 'a' in order to arrive at 'j'.
@@ -85,43 +85,15 @@ horizontalMovement = 4 - 0 = 4 -> four to the right
 output:'DRRRR!'
 ```
 In the example we developed a formula for finding directions between letters. Now let's convert that into some code. 
-
-
-
-The only thing left to do is to iterate over each letter in target. 
-
-In each example case we are given two clues for how to find a solution. First
-we have a list board that contains all alphabetical letters in groups of 5 or
-one. Then we have a string target to help us determine which letters to look
-for on the board. 
-
-Our starting point will always be 'a'. We could use board as it is but what if
-the first letter of target is 'z' and the next letter is 'a' again? To traverse
-this list over and over will increase the time complexity unnecessarily. But
-how should we store this board of letters? 
-
-We want a data structure that helps us maintain a board structure and also
-helps us to access each element quickly. A good alternative would be a
-dictionary. 
-
-The trick with a dictionary is to develop the best key, value pairing that best
-suits your solution. In our case, our goal is to find where each letter on the
-board relative to other letters on the board. So in other words we need letters
-and letter positions ( i.e., letters : letter coordinates ). 
-
-Let's take the board we've been given initially and convert by using a
-dictionary comprehension. 
-
 ```
-b = { 
-   board[ word ][ letter ]: for ( word, letter ) for word in range( len(board))
-                                       for letter in range( len(board[ word ]) ) 
-    }
+def calculate( curr, dest ):
+   currRow, currCol = curr # We can unpack our tuples this way
+   destRow, destCol = dest 
+
+   row = destRow - currRow
+   col = destCol - currCol 
+
+   return row, col 
 ```
 
-Now that we have a dictionary b, we can access each letter and its coordinates
-much faster. 
-
-We can now iterate through the target string letter by letter and compare where
-each letter is in comparison to the previous letter. 
 
