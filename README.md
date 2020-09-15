@@ -67,20 +67,14 @@ new_board = { board[word][letter]: (word,letter) for word in range(len(board))
                                              for letter in range(len(board[word])) }
 ```
 
-*How do we use our dictionary?*
-Maintaining a dictionary of board coordinates allows us to see where each
-letter is in relation to another letter. e.g., 
+### *How do we use our dictionary?*
+
+Here's a quick example for how we will use our dictionary. If target = 'aj' our
+task is to record the directions we need to take from 'a' in order to arrive at 'j'.
 
 ```
-**Start** 'a': (0,0)
-**End** 'j': (1,4) 
-```
-
-Example: **target = 'aj'** 
-
-```
-'a': (0,0)
-'j': (1,4)
+Start at 'a': (0,0)
+End at 'j': (1,4) 
 
 Up / Down formula --> row2 - row1 = vertical movment 
 Left / Right formula --> col2 - col1 = horizontal movement 
@@ -90,6 +84,7 @@ horizontalMovement = 4 - 0 = 4 -> four to the right
 
 output:'DRRRR!'
 ```
+In the example we developed a formula for finding directions between letters. Now let's convert that into some code. 
 
 
 
