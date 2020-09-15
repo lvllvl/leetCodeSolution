@@ -24,12 +24,12 @@ our movement as we move along the board, i.e., we are tracking each letter in
 target and the path to the next letter in target. 
 
 
-Example 1: 
+<ins>Example 1:</ins> 
 ```
 Input: target = "leet"
 Output: "DDR!UURRR!!DDD!"
-
 ```
+
 ## <ins>Brute Force Solution</ins>
 Given the initial data that we're given ( list of strings, a string ), we could
 just use that and iterate over the board list continually until we find our
@@ -41,7 +41,7 @@ be absurd, since we would need to iterate through the list for every letter in
 target.
 ### ** Insert Time Complexity HERE ** 
 
-
+<br>
 
 
 ### <ins>Hash Map Solution</ins>
