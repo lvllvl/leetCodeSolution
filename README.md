@@ -91,19 +91,74 @@ our horizontal movement is 4 right, i.e., 'RRRR'.
 
 Output:'DRRRR!'
 ```
-In the example we developed a formula for finding directions between letters. 
-Now let's convert that into some code. We want to calculate the difference
-between  
+
+Now that we have developed a way to deal with the coordinates in our
+dictionary, we can now write the code for it. 
 
 ```
 def calculate( curr, dest ):
    currRow, currCol = curr # We can unpack our tuples this way
    destRow, destCol = dest 
 
-   row = destRow - currRow
-   col = destCol - currCol 
+   verticalMovement = destRow - currRow
+   horizontalMovement = destCol - currCol 
 
    return row, col 
 ```
+## <ins>Code</ins>
+```
+class Solution:
+   def alphabetBoardPath( self, target: str ) -> str:
 
+      board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
+
+      new_board = { board[word][letter]: (word,letter) for word in range(len(board))
+                                                   for letter in range(len(board[word])) }
+      
+      def calculate( curr, dest ):
+         currRow, currCol = curr # We can unpack our tuples this way
+         destRow, destCol = dest 
+
+         verticalMovement = destRow - currRow
+         horizontalMovement = destCol - currCol 
+
+         return row, col
+     
+     curr = (0,0) # our default starting point
+     ans = '' # return this 
+
+     for i in range( len( target ) ):
+        row, col = calculate( curr, new_board[ target[ i ] ])
+
+        if row == 0 and y == 0: 
+           ans += '!'
+           continue
+        
+        # Adjust Left, Up
+        if col > 0: 
+           while col > 0:
+              ans += 'L'
+              col -= 1
+        if row > 0:
+           while row > 0:
+              ans += 'U'
+              row -= 1
+
+        # Adjust Right, Down
+        if col < 0:
+           while col < 0:
+              ans += 'R'
+              col += 1
+
+        if row < 0:
+           while row < 0:
+              ans += 'D'
+              row += 1 
+
+        curr = new_board[ target[ i ] ]
+        ans += '!'
+      
+
+     return ans 
+```
 
