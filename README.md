@@ -42,32 +42,32 @@ letter in target is 'z'.
 <br>
 
 
-## <ins>Hash Map Solution</ins>
-To simplify our solution, we should identify our end goals: 
-1. We want to find each letter in target
-2. We want to track each letter's position in relation to other letters in
-  target
+## <ins>Better Solution</ins>
+The bottle neck in the previous example appeared because we tried to access the
+letters using the board list. We need to find an alternative data structure
+that allows us to:
+- Access letter quickly 
+- Access each letter's position in relation to other letters
 
-We need to reassess the information we need. We need two things to get the
-desired output: 
-1. We need the letters
-2. We need the location of the letters on the board
-
-Now let's combine those pieces of information to be our key : value combination
-in our board dictionary. That way we avoid having to loop through the board
-list every time we need to find a letter on the board. 
-e.g., letter: ( rows, cols )  
+Re-imagine the alphabet board so that every letter contains coordinates, as
+shown in the image below. 
 
 <p align="center">
 <img width="403" height="500" src="images/azboardCoords.png">
 </p>
-Here's our updated information: 
+
+A dictionary allows us to organize our alphabet board in a way that meets our
+data structure requirements. The lookup time for a dictionary is O( 1 ) and we
+can pair our letters with their coordinates on the board, e.g., 'a': (0,0),
+'b': (0,1), etc.
+Let's create a dictionary comprehension to create our new board dictionary. 
 
 ```
-board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
-target = 'leet'
-b = { 'a': (0,0), 'b':(0,1) ... 'z':(5,0) }
+new_board = { board[word][letter]: (word,letter) for word in range(len(board))
+                                             for letter in range(len(board[word])) }
 ```
+
+*How do we use our dictionary?*
 Maintaining a dictionary of board coordinates allows us to see where each
 letter is in relation to another letter. e.g., 
 
