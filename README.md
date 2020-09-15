@@ -12,35 +12,38 @@ As the title suggests we should think of the alphabet as a board. We use the
 string target as a reference for the letters we need to find in the list board. 
 
 ### <ins>Goal:</ins> 
-We are given a visual representation of the board (above) and a list
-representation of board (below). 
 
 ```
 board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
 target = 'leet'
 ```
-Starting at 'a' our goal is to find every letter on the board. We will track 
-our movement as we move along the board, i.e., we are tracking each letter in
-target and the path to the next letter in target. 
-
+Target acts as a reference for the letters we must find on the alphabet board. Each time we start at 'a' and begin our search. Our goal is to find every letter from target on the board. 
+As we find each letter we must track the directions we take along the way, 
+e.g., Down, Down, Left, Right, etc.  
 
 <ins>Example 1:</ins> 
+Here's an example of what is expected of us. 
 ```
 Input: target = "leet"
 Output: "DDR!UURRR!!DDD!"
 ```
+
+<br> 
 
 ## <ins>Brute Force Solution</ins>
 
 As the data is currently formatted, we would need to continually loop through
 the board list. So for every letter in target we need to loop one time. 
 
-A worst case scenario for this is that target length is 100 and that every
-letter in target is 'z'.  
+This approach is possible but we also need to keep the worst case scenario in
+mind. If we must loop over board to find each letter, what if target is a
+string that contains only 'z' and target length is 100?
+This would create a huge bottleneck in our code because we could potentially
+have to loop over the board alphabet 100 times. 
+
 ### ** Insert Time Complexity HERE ** 
 
 <br>
-
 
 ## <ins>Better Solution</ins>
 The bottle neck in the previous example appeared because we tried to access the
@@ -84,7 +87,10 @@ horizontalMovement = 4 - 0 = 4 -> four to the right
 
 output:'DRRRR!'
 ```
-In the example we developed a formula for finding directions between letters. Now let's convert that into some code. 
+In the example we developed a formula for finding directions between letters. 
+Now let's convert that into some code. We want to calculate the difference
+between  
+
 ```
 def calculate( curr, dest ):
    currRow, currCol = curr # We can unpack our tuples this way
