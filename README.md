@@ -47,7 +47,7 @@ have to loop over the board alphabet 100 times.
 
 ## <ins>Better Solution</ins>
 The bottle neck in the previous example appeared because we tried to access the
-letters using the board **list**. We need to find an alternative data structure
+letters using the board *list*. We need to find an alternative data structure
 that allows us to:
 - Access letter quickly 
 - Access each letter's position in relation to other letters
