@@ -29,7 +29,7 @@ Using the data given to us and without altering it we can iterate through the
 list with a nested for loop. We *could* do that, but our time complexity would
 be absurd, since we would need to iterate through the list for every letter in
 target.
-
+### ** Insert Time Complexity HERE ** 
 
 #### Hash Map Version
 Alternatively, we could choose better data structure to fit our needs. 
@@ -37,6 +37,12 @@ Alternatively, we could choose better data structure to fit our needs.
 <p align="center">
 <img width="403" height="500" src="images/azboardCoords.png">
 </p>
+
+```
+board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
+b = { 'a': (0,0), 'b':(0,1) ... 'z':(5,0) }
+target = 'leet'
+```
 
 In each example case we are given two clues for how to find a solution. First
 we have a list board that contains all alphabetical letters in groups of 5 or
