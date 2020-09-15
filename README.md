@@ -20,7 +20,7 @@ horizontal (no diagonal moves!).
 board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
 target = 'leet'
 ```
-#### Brute Force version
+### <ins>Brute Force Solution</ins>
 Given the initial data that we're given ( list of strings, a string ), we could
 just use that and iterate over the board list continually until we find our
 path. This would be unwise mainly because it would require use to continually
@@ -31,7 +31,7 @@ be absurd, since we would need to iterate through the list for every letter in
 target.
 ### ** Insert Time Complexity HERE ** 
 
-#### Hash Map Version
+### <ins>Hash Map Solution</ins>
 Alternatively, we could choose better data structure to fit our needs. 
 
 <p align="center">
