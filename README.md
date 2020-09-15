@@ -16,7 +16,15 @@ Our starting point is 'a' and our goal is to visit every letter in our target
 string. We must document all our movements, which are limited to vertical and
 horizontal (no diagonal moves!). 
 
+```
+board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
+target = 'leet'
+```
 #### Brute Force version
+Given the initial data that we're given ( list of strings, a string ), we could
+just use that and iterate over the board list continually until we find our
+path. This would be unwise mainly because it would require use to continually
+iterate over the same string n times, where n in the length of target. 
 Using the data given to us and without altering it we can iterate through the
 list with a nested for loop. We *could* do that, but our time complexity would
 be absurd, since we would need to iterate through the list for every letter in
@@ -34,12 +42,6 @@ In each example case we are given two clues for how to find a solution. First
 we have a list board that contains all alphabetical letters in groups of 5 or
 one. Then we have a string target to help us determine which letters to look
 for on the board. 
-
-```
-board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
-target = 'leet'
-
-```
 
 Our starting point will always be 'a'. We could use board as it is but what if
 the first letter of target is 'z' and the next letter is 'a' again? To traverse
