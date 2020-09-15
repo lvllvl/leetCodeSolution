@@ -31,20 +31,18 @@ Output: "DDR!UURRR!!DDD!"
 ```
 
 ## <ins>Brute Force Solution</ins>
-Given the initial data that we're given ( list of strings, a string ), we could
-just use that and iterate over the board list continually until we find our
-path. This would be unwise mainly because it would require use to continually
-iterate over the same string n times, where n in the length of target. 
-Using the data given to us and without altering it we can iterate through the
-list with a nested for loop. We *could* do that, but our time complexity would
-be absurd, since we would need to iterate through the list for every letter in
-target.
+
+As the data is currently formatted, we would need to continually loop through
+the board list. So for every letter in target we need to loop one time. 
+
+A worst case scenario for this is that target length is 100 and that every
+letter in target is 'z'.  
 ### ** Insert Time Complexity HERE ** 
 
 <br>
 
 
-### <ins>Hash Map Solution</ins>
+## <ins>Hash Map Solution</ins>
 To simplify our solution, we should identify our end goals: 
 1. We want to find each letter in target
 2. We want to track each letter's position in relation to other letters in
