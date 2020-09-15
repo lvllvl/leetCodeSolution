@@ -155,8 +155,8 @@ class Solution:
               ans += 'D'
               row += 1 
 
-        curr = new_board[ target[ i ] ]
-        ans += '!'
+     curr = new_board[ target[ i ] ]
+     ans += '!'
       
 
      return ans 
