@@ -72,11 +72,11 @@ Maintaining a dictionary of board coordinates allows us to see where each
 letter is in relation to another letter. e.g., 
 
 ```
-** Start ** 'a': (0,0)
-** End ** 'j': (1,4) 
+**Start** 'a': (0,0)
+**End** 'j': (1,4) 
 ```
 
-Example: ** target = 'aj' ** 
+Example: **target = 'aj'** 
 
 ```
 'a': (0,0)
