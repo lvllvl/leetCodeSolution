@@ -115,7 +115,8 @@ class Solution:
       new_board = { board[word][letter]: (word,letter) for word in range(len(board))
                                                    for letter in range(len(board[word])) }
       
-      def calculate( curr, dest ):
+      def calculate( curr: tuple, dest: tuple ) -> tuple:
+
          currRow, currCol = curr # We can unpack our tuples this way
          destRow, destCol = dest 
 
