@@ -1,14 +1,34 @@
 # leetCodeSolution
 #### Writing sample for a LeetCode Medium Solution 
 
-## 1138 Medium - 
+## 1138. Alphabet Board Path
+#### Medium
 
 <p align="center">
 <img width="403" height="500" src="images/azboard.png">
 </p>
 
-In the initial example they provide us with the clue that the alphabet should
-be treated as a board.
+Goal: 
+We're given a board ( list of alphabet ) and a target ( string ). Our goal is
+to document a path from 'a' then to every other letter in target. 
+
+Our starting point is 'a' and our goal is to visit every letter in our target
+string. We must document all our movements, which are limited to vertical and
+horizontal (no diagonal moves!). 
+
+#### Brute Force version
+Using the data given to us and without altering it we can iterate through the
+list with a nested for loop. We *could* do that, but our time complexity would
+be absurd, since we would need to iterate through the list for every letter in
+target.
+
+
+#### Hash Map Version
+Alternatively, we could choose better data structure to fit our needs. 
+
+<p align="center">
+<img width="403" height="500" src="images/azboardCoords.png">
+</p>
 
 In each example case we are given two clues for how to find a solution. First
 we have a list board that contains all alphabetical letters in groups of 5 or
