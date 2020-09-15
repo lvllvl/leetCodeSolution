@@ -173,4 +173,5 @@ class Solution:
 
 ### <ins>Complexity Analysis:</ins> 
 - Time Complexity: *O( N )* where *N* is the number of letters inside target. 
-- Space Complexity: 
+- Space Complexity: *O( N )* where *N* is the number of entries in our
+  dictionary  
