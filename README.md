@@ -70,22 +70,26 @@ new_board = { board[word][letter]: (word,letter) for word in range(len(board))
                                              for letter in range(len(board[word])) }
 ```
 
-### *How do we use our dictionary to solve our problem?*
+### *How do we use our dictionary to solve this problem?*
 
 Here's a quick example for how we will use our dictionary. If target = 'aj' our
 task is to record the directions we need to take from 'a' in order to arrive at 'j'.
+Remember that our dictionary key-value pair is letter: ( row, column ).
 
 ```
-Start at 'a': (0,0)
+Start at 'a': (0,0) 
 End at 'j': (1,4) 
 
-Up / Down formula --> row2 - row1 = vertical movment 
-Left / Right formula --> col2 - col1 = horizontal movement 
+verticalMovement = destinationRow - currentRow = 1 - 0 = 1 
+horizontalMovement = destinationCol - currentCol = 4 - 0 = 4
 
-verticalMovment = 1 - 0 = 1 -> one down
-horizontalMovement = 4 - 0 = 4 -> four to the right 
+Since we always start at (0,0) assume that any positive vertical movement is
+down, and any positive horizontal movement is to the right. 
 
-output:'DRRRR!'
+Therefore our vertical movement is 1 down, i.e., 'D' and
+our horizontal movement is 4 right, i.e., 'RRRR'.
+
+Output:'DRRRR!'
 ```
 In the example we developed a formula for finding directions between letters. 
 Now let's convert that into some code. We want to calculate the difference
