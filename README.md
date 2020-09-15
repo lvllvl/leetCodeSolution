@@ -8,19 +8,29 @@
 <img width="403" height="500" src="images/azboard.png">
 </p>
 
-Goal: 
-We're given a board ( list of alphabet ) and a target ( string ). Our goal is
-to document a path from 'a' then to every other letter in target. 
+As the title suggests we should think of the alphabet as a board. We use the
+string target as a reference for the letters we need to find in the list board. 
 
-Our starting point is 'a' and our goal is to visit every letter in our target
-string. We must document all our movements, which are limited to vertical and
-horizontal (no diagonal moves!). 
+### <ins>Goal:</ins> 
+We are given a visual representation of the board (above) and a list
+representation of board (below). 
 
 ```
 board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
 target = 'leet'
 ```
-### <ins>Brute Force Solution</ins>
+Starting at 'a' our goal is to find every letter on the board. We will track 
+our movement as we move along the board, i.e., we are tracking each letter in
+target and the path to the next letter in target. 
+
+
+Example 1: 
+```
+Input: target = "leet"
+Output: "DDR!UURRR!!DDD!"
+
+```
+## <ins>Brute Force Solution</ins>
 Given the initial data that we're given ( list of strings, a string ), we could
 just use that and iterate over the board list continually until we find our
 path. This would be unwise mainly because it would require use to continually
