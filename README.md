@@ -31,18 +31,47 @@ be absurd, since we would need to iterate through the list for every letter in
 target.
 ### ** Insert Time Complexity HERE ** 
 
+
+
+
 ### <ins>Hash Map Solution</ins>
-Alternatively, we could choose better data structure to fit our needs. 
+To simplify our solution, we should identify our end goals: 
+1. We want to find each letter in target
+2. We want to track each letter's position in relation to other letters in
+  target
+
+We need to reassess the information we need. We need two things to get the
+desired output: 
+1. We need the letters
+2. We need the location of the letters on the board
+
+Now let's combine those pieces of information to be our key : value combination
+in our board dictionary. That way we avoid having to loop through the board
+list every time we need to find a letter on the board. 
+e.g., letter: ( rows, cols )  
 
 <p align="center">
 <img width="403" height="500" src="images/azboardCoords.png">
 </p>
+Here's our updated information: 
 
 ```
 board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
-b = { 'a': (0,0), 'b':(0,1) ... 'z':(5,0) }
 target = 'leet'
+b = { 'a': (0,0), 'b':(0,1) ... 'z':(5,0) }
 ```
+Maintaining a dictionary of board coordinates allows us to see where each
+letter is in relation to another letter. e.g., 
+       ```
+       ** Start ** 'a': (0,0)
+       ** End ** 'j': (1,4) 
+       ```
+     To get from 'a' to 'j' we can subtract row2 - row1 and col2 - col1.
+     rows = 1 - 0 = 1, cols = 4 - 0 = 4
+     Because rows is positive we know that 'j' is one row below 'a', and because cols
+     is positive we know that 'j' is four cols to the right of 'a'.
+
+The only thing left to do is to iterate over each letter in target. 
 
 In each example case we are given two clues for how to find a solution. First
 we have a list board that contains all alphabetical letters in groups of 5 or
