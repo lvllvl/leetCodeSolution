@@ -84,8 +84,8 @@ target = 'aj'
 Our task is to record the directions to get from 'a' to 'j'. 
 
 ```
-Start at 'a': (0,0) 
-End at 'j': (1,4) 
+Current position at 'a': (0,0) 
+Destination position at 'j': (1,4) 
 
 verticalMovement = destinationRow - currentRow = 1 - 0 = 1 
 horizontalMovement = destinationCol - currentCol = 4 - 0 = 4
@@ -130,38 +130,39 @@ class Solution:
          verticalMovement = destRow - currRow
          horizontalMovement = destCol - currCol 
 
-         return row, col
+         return row, col # return a tuple 
      
      curr = (0,0) # our default starting point
      ans = '' # return this 
 
      for i in range( len( target ) ):
+
         row, col = calculate( curr, new_board[ target[ i ] ])
 
-        if row == 0 and y == 0: 
+        if row == 0 and y == 0: # 0,0 means same letter again, e.g., 'ee' 
            ans += '!'
            continue
         
         # Adjust Left, Up
-        if col > 0: 
-           while col > 0:
-              ans += 'L'
-              col -= 1
-        if row > 0:
-           while row > 0:
-              ans += 'U'
-              row -= 1
-
-        # Adjust Right, Down
-        if col < 0:
+        if col < 0: 
            while col < 0:
-              ans += 'R'
+              ans += 'L'
               col += 1
-
         if row < 0:
            while row < 0:
+              ans += 'U'
+              row += 1
+
+        # Adjust Right, Down
+        if col > 0:
+           while col > 0:
+              ans += 'R'
+              col -= 1
+
+        if row > 0:
+           while row > 0:
               ans += 'D'
-              row += 1 
+              row -= 1 
 
      curr = new_board[ target[ i ] ]
      ans += '!'
