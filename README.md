@@ -67,10 +67,23 @@ letter is in relation to another letter. e.g.,
 ** Start ** 'a': (0,0)
 ** End ** 'j': (1,4) 
 ```
-     To get from 'a' to 'j' we can subtract row2 - row1 and col2 - col1.
-     rows = 1 - 0 = 1, cols = 4 - 0 = 4
-     Because rows is positive we know that 'j' is one row below 'a', and because cols
-     is positive we know that 'j' is four cols to the right of 'a'.
+
+Example: ** target = 'aj' ** 
+
+```
+'a': (0,0)
+'j': (1,4)
+
+Up / Down formula --> row2 - row1 = vertical movment 
+Left / Right formula --> col2 - col1 = horizontal movement 
+
+verticalMovment = 1 - 0 = 1 -> one down
+horizontalMovement = 4 - 0 = 4 -> four to the right 
+
+output:'DRRRR!'
+```
+
+
 
 The only thing left to do is to iterate over each letter in target. 
 
