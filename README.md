@@ -8,21 +8,18 @@
 <img width="403" height="500" src="images/azboard.png">
 </p>
 
-As the title suggests we should think of the alphabet as a board. We use the
-string target as a reference for the letters we need to find in the list board. 
-
 ### <ins>Goal:</ins> 
 
 ```
 board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
 target = 'leet'
 ```
-Target acts as a reference for the letters we must find on the alphabet board. Each time we start at 'a' and begin our search. Our goal is to find every letter from target on the board. 
-As we find each letter we must track the directions we take along the way, 
+Target acts as a reference for the letters we must find on the alphabet board. For each target we start at 'a' and begin our search. Our goal is to find every letter from target on the board. 
+As we find each letter we must record the directions we take along the way, 
 e.g., Down, Down, Left, Right, etc.  
 
 <ins>Example 1:</ins> 
-Here's an example of what is expected of us. 
+Here's an example of what inputs and outputs are expected from us. 
 ```
 Input: target = "leet"
 Output: "DDR!UURRR!!DDD!"
@@ -30,40 +27,48 @@ Output: "DDR!UURRR!!DDD!"
 
 <br> 
 
-## <ins>Brute Force Solution</ins>
+## <ins>Assess our data</ins>
+```
+board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
+target = 'leet'
+```
 
 As the data is currently formatted, we would need to continually loop through
-the board list. So for every letter in target we need to loop one time. 
+the board list to find every letter in target. O( n^n ), where n = the length
+of board. We also need to factor in the length of target. Ultimately our time
+complexity would be O( n^n * t ), where t is the length of target.  
 
-This approach is possible but we also need to keep the worst case scenario in
-mind. If we must loop over board to find each letter, what if target is a
-string that contains only 'z' and target length is 100?
-This would create a huge bottleneck in our code because we could potentially
-have to loop over the board alphabet 100 times. 
-
-### ** Insert Time Complexity HERE ** 
+It's easy to see that this approach will not work. The length constraints for
+target are target.length <= 100. Therefore our worst case scenario is: 
+```
+len( target ) == 100, target ='zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'
+```
+Meaning our code would need to loop through the board list 100 times to find
+the position of 'z'. This creates a bottleneck for our code. We need to find a
+better alternative data structure to maintain our board. 
 
 <br>
 
-## <ins>Better Solution</ins>
-The bottle neck in the previous example appeared because we tried to access the
-letters using the board *list*. We need to find an alternative data structure
-that allows us to:
-- Access letter quickly 
+## <ins>Better Data Structure</ins>
+We need to find an alternative data structure that allows us to:
+- Access letters quickly 
 - Access each letter's position in relation to other letters
 
-Re-imagine the alphabet board so that every letter contains coordinates, as
-shown in the image below. 
+One way to do this is to re-imagine the alphabet board so that every letter contains coordinates, as
+shown in the image below. This way each letter is paired with a set of
+coordinates. 
 
 <p align="center">
 <img width="403" height="500" src="images/azboardCoords.png">
 </p>
 
-A dictionary allows us to organize our alphabet board in a way that meets our
-data structure requirements. The lookup time for a dictionary is O( 1 ) and we
-can pair our letters with their coordinates on the board, e.g., 'a': (0,0),
-'b': (0,1), etc.
-Let's create a dictionary comprehension to create our new board dictionary. 
+This approach allows us to use a dictionary. A dictionary pairs together a
+key : value combination. The key allows us to lookup the value in O( 1 ) time. 
+
+In our case, our key : value combination could be letter : ( row, column ),
+e.g., 'a': (0, 0), 'b': (0, 1), 'c': (0, 2), etc. 
+
+Let's create a dictionary comprehension to create our new_board dictionary. 
 
 ```
 new_board = { board[word][letter]: (word,letter) for word in range(len(board))
@@ -72,9 +77,11 @@ new_board = { board[word][letter]: (word,letter) for word in range(len(board))
 
 ### *How do we use our dictionary to solve this problem?*
 
-Here's a quick example for how we will use our dictionary. If target = 'aj' our
-task is to record the directions we need to take from 'a' in order to arrive at 'j'.
-Remember that our dictionary key-value pair is letter: ( row, column ).
+Here's a quick example of how we will use our dictionary. 
+
+target = 'aj'
+
+Our task is to record the directions to get from 'a' to 'j'. 
 
 ```
 Start at 'a': (0,0) 
