@@ -62,10 +62,11 @@ b = { 'a': (0,0), 'b':(0,1) ... 'z':(5,0) }
 ```
 Maintaining a dictionary of board coordinates allows us to see where each
 letter is in relation to another letter. e.g., 
-       ```
-       ** Start ** 'a': (0,0)
-       ** End ** 'j': (1,4) 
-       ```
+
+```
+** Start ** 'a': (0,0)
+** End ** 'j': (1,4) 
+```
      To get from 'a' to 'j' we can subtract row2 - row1 and col2 - col1.
      rows = 1 - 0 = 1, cols = 4 - 0 = 4
      Because rows is positive we know that 'j' is one row below 'a', and because cols
