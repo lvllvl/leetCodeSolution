@@ -164,7 +164,7 @@ class Solution:
               ans += 'D'
               row -= 1 
 
-     curr = new_board[ target[ i ] ]
+        curr = new_board[ target[ i ] ]
      ans += '!'
       
 
