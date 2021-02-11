@@ -6,15 +6,17 @@
 
 <p align="center">
 <img width="403" height="500" src="images/azboard.png">
+  figure 1
 </p>
 
 ### <ins>Goal:</ins> 
+We are given the following parameters, board and target. Our board variable will always remain the same, while target will be any series of lowercase letters.
 
 ```
 board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
 target = 'leet'
 ```
-Target acts as a reference for the letters we must find on the alphabet board. For each target we start at 'a' and begin our search. Our goal is to find every letter from target on the board. 
+Target acts as a reference for the letters we must find on the alphabet board. The starting point is always 'a' on your board. Our goal is to find every letter from target on the board. 
 As we find each letter we must record the directions we take along the way, 
 e.g., Down, Down, Left, Right, etc.  
 
@@ -24,15 +26,36 @@ Here's an example of what inputs and outputs are expected from us.
 Input: target = "leet"
 Output: "DDR!UURRR!!DDD!"
 ```
+The exclamation points act as a separator between each letter in target.
+Once we find a letter, we also add an exclamation point. 
 
 <br> 
 
-## <ins>Assess our data</ins>
+## <ins>Initial Strategy: Approaching Our Solution</ins>
 ```
 board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
 target = 'leet'
 ```
 
+One way to approach a solution is to talk through a solution without using any
+code. If we can articulate a solution, then we can convert the solution into
+code. 
+
+Fig. 1, depicts our board variable as an actual board. Starting from 'a', we 
+can navigate up, down, left, or right to find each letter in target. 
+
+
+
+
+
+
+
+
+As the data is currently formatted, we could find our solution. We would need
+to loop through the board list to find every letter in target. 
+It's important to remember that our solution needs to be optimal for even the
+worst case scenario. If target is a string of 100 z's then our algorithm would
+need to loop from a to z every
 As the data is currently formatted, we would need to continually loop through
 the board list to find every letter in target. O( n^n ), where n = the length
 of board. We also need to factor in the length of target. Ultimately our time
