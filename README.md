@@ -6,7 +6,7 @@
 
 <p align="center">
 <img width="403" height="500" src="images/azboard.png">
-  figure 1
+  <p>Fig. 1</p>
 </p>
 
 ### <ins>Goal:</ins> 
@@ -37,58 +37,42 @@ board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
 target = 'leet'
 ```
 
-One way to approach a solution is to talk through a solution without using any
+One way to approach a solution is to talk through a solution without using *any*
 code. If we can articulate a solution, then we can convert the solution into
 code. 
 
-Fig. 1, depicts our board variable as an actual board. Starting from 'a', we 
-can navigate up, down, left, or right to find each letter in target. 
+Fig. 1, depicts our board variable as an *actual board*. Starting from 'a', we 
+can navigate up, down, left, or right to find each letter in target.
 
+Now how can we convert that solution to code?
 
+When we used Fig. 1 it provided an easy way to know our location on the board at all times.
+We knew what letter we were at and where the letter was in relation to other letters on the
+board.
 
-
-
-
-
-
-As the data is currently formatted, we could find our solution. We would need
-to loop through the board list to find every letter in target. 
-It's important to remember that our solution needs to be optimal for even the
-worst case scenario. If target is a string of 100 z's then our algorithm would
-need to loop from a to z every
-As the data is currently formatted, we would need to continually loop through
-the board list to find every letter in target. O( n^n ), where n = the length
-of board. We also need to factor in the length of target. Ultimately our time
-complexity would be O( n^n * t ), where t is the length of target.  
-
-It's easy to see that this approach will not work. The length constraints for
-target are target.length <= 100. Therefore our worst case scenario is: 
-```
-len( target ) == 100, target ='zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'
-```
-Meaning our code would need to loop through the board list 100 times to find
-the position of 'z'. This creates a bottleneck for our code. We need to find a
-better alternative data structure to maintain our board. 
+Currently, our board variable is a list of strings. If possible we need a data structure that
+allows us to know where we are on the board and what letters are around us. This current list
+will not work. 
 
 <br>
 
-## <ins>Better Data Structure</ins>
+## <ins>A Better Data Structure</ins>
 We need to find an alternative data structure that allows us to:
 - Access letters quickly 
 - Access each letter's position in relation to other letters
 
-One way to do this is to re-imagine the alphabet board so that every letter contains coordinates, as
-shown in the image below. This way each letter is paired with a set of
-coordinates. 
+We can build off our example in Fig. 1 and add coordinates to each
+letter. Now each letter is paired with a set of coordinates. 
 
 <p align="center">
 <img width="403" height="500" src="images/azboardCoords.png">
+  <p>Fig. 2</p>
 </p>
 
 This approach allows us to use a dictionary. A dictionary pairs together a
-key : value combination. The key allows us to lookup the value in O( 1 ) time. 
+key / value combination. The key allows us to lookup the value in O( 1 ) time. 
 
-In our case, our key : value combination could be letter : ( row, column ),
+In our case, our key / value combination could be a letter and its coordinates,
 e.g., 'a': (0, 0), 'b': (0, 1), 'c': (0, 2), etc. 
 
 Let's create a dictionary comprehension to create our new_board dictionary. 
