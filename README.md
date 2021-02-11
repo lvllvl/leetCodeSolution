@@ -10,15 +10,21 @@
 </p>
 
 ### <ins>Goal:</ins> 
-We are given the following parameters, board and target. Our board variable will always remain the same, while target will be any series of lowercase letters.
+We are given the following parameters, board and target. Our board
+variable will always remain the same, while target will be any series
+of lowercase letters.
 
 ```
 board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
 target = 'leet'
 ```
-Target acts as a reference for the letters we must find on the alphabet board. The starting point is always 'a' on your board. Our goal is to find every letter from target on the board. 
-As we find each letter we must record the directions we take along the way, 
-e.g., Down, Down, Left, Right, etc.  
+Target acts as a reference for the letters we must find on the alphabet 
+board. The initial starting point is always 'a'. Our goal is to find every
+letter from target on the board.
+
+As we find each letter we'll record the directions we take along the way, 
+e.g., Down, Down, Left, Right, etc. That will be the final answer we 
+return in string format. 
 
 <ins>Example 1:</ins> 
 Here's an example of what inputs and outputs are expected from us. 
@@ -37,7 +43,7 @@ board = [ 'abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy', 'z' ]
 target = 'leet'
 ```
 
-One way to approach a solution is to talk through a solution without using *any*
+One way to approach this problem is to talk through a solution without using *any*
 code. If we can articulate a solution, then we can convert the solution into
 code. 
 
@@ -51,7 +57,7 @@ We knew what letter we were at and where the letter was in relation to other let
 board.
 
 Currently, our board variable is a list of strings. If possible we need a data structure that
-allows us to know where we are on the board and what letters are around us. This current list
+allows us to easily know where we are on the board and what letters are around us. This current list
 will not work. 
 
 <br>
@@ -62,7 +68,7 @@ We need to find an alternative data structure that allows us to:
 - Access each letter's position in relation to other letters
 
 We can build off our example in Fig. 1 and add coordinates to each
-letter. Now each letter is paired with a set of coordinates. 
+letter. Fig. 2 below pairs each letter with a set of coordinates. 
 
 <p align="center">
 <img width="403" height="500" src="images/azboardCoords.png">
@@ -72,7 +78,7 @@ letter. Now each letter is paired with a set of coordinates.
 This approach allows us to use a dictionary. A dictionary pairs together a
 key / value combination. The key allows us to lookup the value in O( 1 ) time. 
 
-In our case, our key / value combination could be a letter and its coordinates,
+In our case, the key / value combination could be a letter and its coordinates,
 e.g., 'a': (0, 0), 'b': (0, 1), 'c': (0, 2), etc. 
 
 Let's create a dictionary comprehension to create our new_board dictionary. 
@@ -82,7 +88,7 @@ new_board = { board[word][letter]: (word,letter) for word in range(len(board))
                                              for letter in range(len(board[word])) }
 ```
 
-### *How do we use our dictionary to solve this problem?*
+### Testing Our Dictionary: How Will It Work?
 
 Here's a quick example of how we will use our dictionary. 
 
@@ -177,8 +183,3 @@ class Solution:
 
      return ans 
 ```
-
-### <ins>Complexity Analysis:</ins> 
-- Time Complexity: *O( N )* where *N* is the number of letters inside target. 
-- Space Complexity: *O( N )* where *N* is the number of entries in our
-  dictionary  
